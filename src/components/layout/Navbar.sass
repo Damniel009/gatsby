@@ -55,15 +55,12 @@ body
       display: flex
       li
         margin: 0 40px 0 0
-        opacity: .4
-        transition: all 0.4s ease
-        &:hover
-          opacity: .7
         &.active
           opacity: 1
         &:last-child
           margin-right: 0
         a
+          opacity: .4
           text-decoration: none
           color: #181717
           text-transform: uppercase
@@ -71,6 +68,9 @@ body
           font-weight: 600
           letter-spacing: .2em
           font-size: 16px
+          &:hover
+            opacity: .7
+            transition: all 0.4s ease
           div
             &.active
               font-style: italic

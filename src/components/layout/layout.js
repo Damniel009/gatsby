@@ -1,15 +1,13 @@
 import * as React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
+import { Link } from "gatsby";
+import { heading, active } from "./layout.module.scss";
 
-import { extendTheme } from "@chakra-ui/react";
-import { ChakraProvider } from "@chakra-ui/react";
-
-//sass
-import "./navigation.sass";
+import "./Navbar.sass";
 import "./Searchbar.scss";
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { HamburgerIcon } from "@chakra-ui/icons"
 
-const Navigation = () => {
+const Layout = ({ pageTitle, children }) => {
   return (
     <div>
       <div className="navbar-container">
@@ -40,27 +38,27 @@ const Navigation = () => {
           <nav>
             <ul className="nav-links">
               <li className="nav__item">
-                <Link to="/index">
+                <Link activeClassName={active} to="/">
                   <div className="link">Home</div>
                 </Link>
               </li>
               <li className="nav__item">
-                <Link to="/servicii">
+                <Link activeClassName={active} to="/servicii">
                   <div className="link">Servicii</div>
                 </Link>
               </li>
               <li className="nav__item">
-                <Link to="/work">
+                <Link activeClassName={active} to="/work">
                   <div className="link">Work</div>
                 </Link>
               </li>
               <li className="nav__item">
-                <Link to="/introducere">
+                <Link activeClassName={active} to="/introducere">
                   <div className="link">Introducere</div>
                 </Link>
               </li>
               <li className="nav__item">
-                <Link to="/about">
+                <Link activeClassName={active} to="/about">
                   <div className="link">About</div>
                 </Link>
               </li>
@@ -75,16 +73,18 @@ const Navigation = () => {
                 </div>
               </li>
             </ul>
-            <button className="button">
-              <span className="button__line"></span>
-              <span className="button__line"></span>
-              <span className="button__line"></span>
-            </button>
+
+            <Button leftIcon={<HamburgerIcon />} variant="outline"/>
+              
           </nav>
         </div>
       </div>
+      <main>
+        <h1 className={heading}>{pageTitle}</h1>
+        {children}
+      </main>
     </div>
   );
 };
 
-export default Navigation;
+export default Layout;
