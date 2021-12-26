@@ -3,6 +3,7 @@ module.exports = {
     title: "My First Gatsby Site",
   },
   plugins: [
+    '@chakra-ui/gatsby-plugin',
     "gatsby-plugin-sass",
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
