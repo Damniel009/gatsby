@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import { SearchIcon } from "@chakra-ui/icons";
 
 import "./footer.scss";
 

@@ -1,18 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: "My First Gatsby Site",
+    siteUrl: "https://www.yourdomain.tld",
+    title: "My Gatsby Site",
   },
   plugins: [
     '@chakra-ui/gatsby-plugin',
-    "gatsby-plugin-sass",
+    `gatsby-plugin-fontawesome-css`,
     "gatsby-plugin-gatsby-cloud",
-    "gatsby-plugin-image",
+    "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "231412",
+        trackingId: "12312322",
       },
     },
+    "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
@@ -21,14 +23,24 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
+    "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: `blog`,
-        path: `${__dirname}/blog`,
+        name: "images",
+        path: "./src/images/",
       },
+      __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./src/pages/",
+      },
+      __key: "pages",
     },
     {
       resolve: `gatsby-plugin-typescript`,
@@ -38,8 +50,5 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-mdx",
   ],
 };
