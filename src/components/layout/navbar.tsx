@@ -15,10 +15,13 @@ import { SearchIcon } from "@chakra-ui/icons";
 import "./Searchbar.scss";
 
 const {
-  navbar_container, logo,
-  space, nav_options_container, active, btn,
+  navbar_container,
+  logo,
+  space,
+  nav_options_container,
+  active,
+  btn,
 } = require("./navbar.module.scss");
-
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
