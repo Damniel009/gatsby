@@ -208,13 +208,36 @@ p {
 }
 
 .mockSlider {
-  // width: fit-content !important;
-  // height: fit-content !important;
+}
+
+.carousel__back-button {
+  position: relative;
+  left: 35px;
+  z-index: 1000;
+}
+
+.carousel__next-button {
+  position: relative;
+  right: 35px;
+}
+
+.carousel__dot {
+  background-color: azure !important;
+
+  padding: 2px 5px;
+  border: 1px solid;
+  border-radius: 2px;
+  margin-right: 5px;
+
+  &:disabled {
+    background-color: rgb(124, 133, 133) !important;
+  }
 }
 
 .mockSlide {
-  height: fit-content !important;
+  height: 300px !important;
   width: 100%;
   background-color: grey;
   color: white;
+  border: 1px solid black;
 }
