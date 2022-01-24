@@ -9,8 +9,12 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 import "./Searchbar.scss";
 
@@ -19,8 +23,10 @@ const {
   logo,
   space,
   nav_options_container,
+  nav_options_container_mobile,
   active,
   btn,
+  hamburger_btn,
 } = require("./navbar.module.scss");
 
 const Navbar = () => {
@@ -103,6 +109,26 @@ const Navbar = () => {
               />
             </li>
           </ul>
+        </nav>
+      </div>
+
+      <div className={nav_options_container_mobile}>
+        <nav>
+          <Menu>
+            <MenuButton
+              as={HamburgerIcon}
+              aria-label="Options"
+              icon={<HamburgerIcon />}
+              variant="outline"
+              className={hamburger_btn}
+            />
+            <MenuList>
+              <MenuItem command="⌘T">New Tab</MenuItem>
+              <MenuItem command="⌘N">New Window</MenuItem>
+              <MenuItem command="⌘⇧N">Open Closed Tab</MenuItem>
+              <MenuItem command="⌘O">Open File...</MenuItem>
+            </MenuList>
+          </Menu>
         </nav>
       </div>
     </div>

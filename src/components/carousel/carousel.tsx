@@ -7,9 +7,6 @@ import {
   ButtonNext,
   ImageWithZoom,
   Image,
-  ButtonFirst,
-  ButtonPlay,
-  ButtonLast,
   DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
@@ -17,12 +14,31 @@ import CustomSlide from "./slide";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import "./style.scss";
 
+const slideArrays = [
+  {
+    header: "Maximális komfortérzet, minimális energiafogyasztás!",
+    text: "Padló- és mennyezetfűtési / -hűtési megoldások, professzionális kivitelezésben, garanciával",
+  },
+  {
+    header: "Tudta, hogy rezsiköltsége lehet akár 0 Ft is?",
+    text: "Ha szeretné csökkenteni fűtésszámláját, hívja a Hőszivattyú-Gépész Kft.-t!",
+  },
+  {
+    header: "Hővisszanyerős szellőzés: megoldás allergia ellen!",
+    text: "Teljeskörű beltéri megoldások a tisztított, pollenmentes levegő érdekében!",
+  },
+  {
+    header: "Környezetbarát hőenergia az Ön otthonában is!",
+    text: "Minőségi megoldásokat kínálunk hosszú távra, több éves szakmai tapasztalattal.",
+  },
+];
+
 export default function Carousel() {
   return (
     <div className="d-flex justify-content-center h-25">
       <CarouselProvider
         visibleSlides={1}
-        totalSlides={4}
+        totalSlides={slideArrays.length}
         naturalSlideWidth={200}
         naturalSlideHeight={70}
         isIntrinsicHeight={true}
@@ -34,40 +50,20 @@ export default function Carousel() {
             <ArrowBackIcon className="carousel_navigation_button" />
           </ButtonBack>
           <Slider className="mockSlider">
-            <Slide className="mockSlide" index={0}>
-              <h4>Maximális komfortérzet, minimális energiafogyasztás!</h4>
-              <div>
-                Padló- és mennyezetfűtési / -hűtési megoldások, professzionális
-                kivitelezésben, garanciával.
-              </div>
-            </Slide>
-            <Slide className="mockSlide" index={1}>
-              <h4>Tudta, hogy rezsiköltsége lehet akár 0 Ft is?</h4>
-              <div>
-                Ha szeretné csökkenteni fűtésszámláját, hívja a
-                Hőszivattyú-Gépész Kft.-t!
-              </div>
-            </Slide>
-            <Slide className="mockSlide" index={2}>
-              <h4>Hővisszanyerős szellőzés: megoldás allergia ellen!</h4>
-              <div>
-                Teljeskörű beltéri megoldások a tisztított, pollenmentes levegő
-                érdekében!
-              </div>
-            </Slide>
-            <Slide className="mockSlide" index={0}>
-              <h4>Környezetbarát hőenergia az Ön otthonában is!</h4>
-              <div>
-                Minőségi megoldásokat kínálunk hosszú távra, több éves szakmai
-                tapasztalattal.
-              </div>
-            </Slide>
+            {slideArrays.map((slide, index) => (
+              <CustomSlide
+                key={index}
+                index={index}
+                header={slide.header}
+                text={slide.text}
+              />
+            ))}
           </Slider>
           <ButtonNext>
             <ArrowForwardIcon className="carousel_navigation_button" />
           </ButtonNext>
         </div>
-        <DotGroup className="mt-2" dotNumbers disableActiveDots />
+        <DotGroup className="mt-2" disableActiveDots />
       </CarouselProvider>
     </div>
   );

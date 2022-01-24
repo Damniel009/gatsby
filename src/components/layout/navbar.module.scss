@@ -11,6 +11,10 @@
   z-index: 20;
 }
 
+.nav_options_container_mobile {
+  display: none;
+}
+
 .logo {
   width: 20%;
   // margin: auto 0;
@@ -103,6 +107,25 @@
 
   span {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .nav_options_container {
+    display: none;
+  }
+
+  .nav_options_container_mobile {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  .hamburger_btn {
+    width: 2em !important;
+    height: 2em !important;
   }
 }
 

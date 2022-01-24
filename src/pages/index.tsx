@@ -8,9 +8,7 @@ const IndexPage = () => {
   return (
     <Layout pageTitle="Home Page">
       <div>
-        <div>
           <Carousel></Carousel>
-        </div>
       </div>
     </Layout>
   );
