@@ -11,7 +11,7 @@
   position: absolute;
   left: 35px;
   top: 43%;
-  z-index: 1000;
+  z-index: 40;
 }
 
 .carousel__next-button {
@@ -73,7 +73,7 @@
     //https://stackoverflow.com/questions/26275982/putting-moz-available-and-webkit-fill-available-in-one-width-css-property
     //in case of problems with the carousel width
   }
-  
+
   .carousel__back-button {
     display: none !important;
   }
