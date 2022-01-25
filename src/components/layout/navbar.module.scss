@@ -128,8 +128,16 @@
   }
 
   .hamburger_btn {
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .hamburger_icon {
     width: 2em !important;
     height: 2em !important;
+    color: black !important;
   }
 }
 

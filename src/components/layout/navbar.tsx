@@ -9,10 +9,11 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 
@@ -26,11 +27,41 @@ const {
   nav_options_container_mobile,
   active,
   btn,
+  hamburger_icon,
   hamburger_btn,
 } = require("./navbar.module.scss");
 
+const menuOptions = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Servicii",
+    link: "/servicii",
+  },
+  {
+    name: "Work",
+    link: "/work",
+  },
+  {
+    name: "Introducere",
+    link: "/introducere",
+  },
+  {
+    name: "About",
+    link: "/about",
+  },
+];
+
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenDrawer,
+    onOpen: onOpenDrawer,
+    onClose: onCloseDrawer,
+  } = useDisclosure();
+
   const [size, setSize] = React.useState("md");
 
   const openSearchDialog = () => {
@@ -48,6 +79,57 @@ const Navbar = () => {
       </div>
 
       <div className={space}></div>
+
+      <div className={nav_options_container}>
+        <nav>
+          <ul className="nav-links">
+            {menuOptions.map((menuOption, index) => {
+              return (
+                <li className="nav__item" key={menuOption.name}>
+                  <Link to={menuOption.link} activeClassName={active}>
+                    <div className="link">{menuOption.name}</div>
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="nav__item searchIcon" key={"search"}>
+              <Button
+                leftIcon={<SearchIcon />}
+                variant="ghost"
+                className={btn}
+                onClick={() => openSearchDialog()}
+              />
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div className={nav_options_container_mobile}>
+        <nav>
+          <Button
+            className={hamburger_btn}
+            colorScheme="white"
+            onClick={onOpenDrawer}
+          >
+            <HamburgerIcon className={hamburger_icon} />
+          </Button>
+        </nav>
+      </div>
+
+      <Drawer placement={"top"} onClose={onCloseDrawer} isOpen={isOpenDrawer}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerBody>
+            {menuOptions.map((menuOption,) => {
+              return (
+                <Link to={menuOption.link} activeClassName={active}>
+                  <div className="link">{menuOption.name}</div>
+                </Link>
+              );
+            })}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
 
       <Modal onClose={onClose} size={size} isOpen={isOpen}>
         <ModalOverlay />
@@ -71,66 +153,6 @@ const Navbar = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-
-      <div className={nav_options_container}>
-        <nav>
-          <ul className="nav-links">
-            <li className="nav__item">
-              <Link activeClassName={active} to="/">
-                <div className="link">Home</div>
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link activeClassName={active} to="/servicii">
-                <div className="link">Servicii</div>
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link activeClassName={active} to="/work">
-                <div className="link">Work</div>
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link activeClassName={active} to="/introducere">
-                <div className="link">Introducere</div>
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link activeClassName={active} to="/about">
-                <div className="link">About</div>
-              </Link>
-            </li>
-            <li className="nav__item searchIcon">
-              <Button
-                leftIcon={<SearchIcon />}
-                variant="ghost"
-                className={btn}
-                onClick={() => openSearchDialog()}
-              />
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div className={nav_options_container_mobile}>
-        <nav>
-          <Menu>
-            <MenuButton
-              as={HamburgerIcon}
-              aria-label="Options"
-              icon={<HamburgerIcon />}
-              variant="outline"
-              className={hamburger_btn}
-            />
-            <MenuList>
-              <MenuItem command="⌘T">New Tab</MenuItem>
-              <MenuItem command="⌘N">New Window</MenuItem>
-              <MenuItem command="⌘⇧N">Open Closed Tab</MenuItem>
-              <MenuItem command="⌘O">Open File...</MenuItem>
-            </MenuList>
-          </Menu>
-        </nav>
-      </div>
     </div>
   );
 };
