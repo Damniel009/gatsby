@@ -43,6 +43,36 @@ module.exports = {
       __key: "pages",
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "locale",
+        path: "./src/locales/",
+      },
+      __key: "locale",
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`ro`, `hu`],
+        defaultLanguage: `hu`,
+        siteUrl: `http://localhost:8000/`,
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false 
+          },
+          keySeparator: false,
+          nsSeparator: false
+        },
+      },
+      pages: [
+        {
+          matchPath: '/:lang?/about',
+          getLanguageFromPath: true,
+        },
+      ]
+    },
+    {
       resolve: `gatsby-plugin-typescript`,
       options: {
         isTSX: true, // defaults to false

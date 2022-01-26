@@ -1,10 +1,8 @@
 import * as React from "react";
 
-import Footer from "./footer";
-import Navbar from "./navbar";
+import Footer from "./footer/footer";
+import Navbar from "./navbar/navbar";
 import { Helmet } from "react-helmet";
-
-import "./Searchbar.scss";
 
 const Layout = ({ pageTitle, children }) => {
   return (

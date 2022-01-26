@@ -2,22 +2,16 @@ import * as React from "react";
 import { Link } from "gatsby";
 import {
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
   useDisclosure,
   Drawer,
   DrawerOverlay,
   DrawerContent,
-  DrawerHeader,
   DrawerBody,
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 
-import "./Searchbar.scss";
+import SearchModal from "../search-modal/searchModal";
+import LanguageSwitch from "../language-switch/languageSwitch";
 
 const {
   navbar_container,
@@ -78,7 +72,7 @@ const Navbar = () => {
         />
       </div>
 
-      <div className={space}></div>
+      <div className={space}>{/* <LanguageSwitch></LanguageSwitch> */}</div>
 
       <div className={nav_options_container}>
         <nav>
@@ -120,7 +114,7 @@ const Navbar = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody>
-            {menuOptions.map((menuOption,) => {
+            {menuOptions.map((menuOption) => {
               return (
                 <Link to={menuOption.link} activeClassName={active}>
                   <div className="link">{menuOption.name}</div>
@@ -131,28 +125,7 @@ const Navbar = () => {
         </DrawerContent>
       </Drawer>
 
-      <Modal onClose={onClose} size={size} isOpen={isOpen}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader></ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <div className="modal_body">
-              <div className="modal_search_wrapper">
-                <form method="get" className="modal_searchform" action="">
-                  <input
-                    type="text"
-                    defaultValue=""
-                    placeholder="Search..."
-                    className="modal_input"
-                  />
-                  <SearchIcon className="modal_search_icon" />
-                </form>
-              </div>
-            </div>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <SearchModal onClose={onClose} size={size} isOpen={isOpen}></SearchModal>
     </div>
   );
 };
