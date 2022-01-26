@@ -49,7 +49,7 @@ export default function Carousel() {
           <ButtonBack>
             <ArrowBackIcon className="carousel_navigation_button" />
           </ButtonBack>
-          <Slider className="mockSlider">
+          <Slider>
             {slideArrays.map((slide, index) => (
               <CustomSlide
                 key={index}

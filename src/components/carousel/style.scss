@@ -4,9 +4,6 @@
   background-color: bisque;
 }
 
-.mockSlider {
-}
-
 .carousel__back-button {
   position: absolute;
   left: 35px;
@@ -54,7 +51,8 @@
 .slide {
   height: 600px !important;
   width: fit-content;
-  border: 1px solid black;
+  background-color: rgb(128 128 128 / 14%);
+  // border: 1px solid black;
   padding: 10px 70px;
 
   .slideContent {
