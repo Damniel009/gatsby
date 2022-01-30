@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 
+import { useI18next } from "gatsby-plugin-react-i18next";
+
 import SearchModal from "../search-modal/searchModal";
 import LanguageSwitch from "../language-switch/languageSwitch";
 
@@ -48,7 +50,16 @@ const menuOptions = [
   },
 ];
 
+const convertMenuLinks = (link: string, language: string) => {
+  if (language === "ro") {
+    const newLink = '/ro' + link;
+    return newLink;
+  }
+  return link;
+};
+
 const Navbar = () => {
+  const { language } = useI18next();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isOpenDrawer,
@@ -72,15 +83,21 @@ const Navbar = () => {
         />
       </div>
 
-      <div className={space}>{/* <LanguageSwitch></LanguageSwitch> */}</div>
+      <div className={space}>
+        <LanguageSwitch></LanguageSwitch>
+      </div>
 
+      {/* Desktop navigation */}
       <div className={nav_options_container}>
         <nav>
           <ul className="nav-links">
             {menuOptions.map((menuOption, index) => {
               return (
                 <li className="nav__item" key={menuOption.name}>
-                  <Link to={menuOption.link} activeClassName={active}>
+                  <Link
+                    to={convertMenuLinks(menuOption.link, language)}
+                    activeClassName={active}
+                  >
                     <div className="link">{menuOption.name}</div>
                   </Link>
                 </li>
@@ -98,6 +115,7 @@ const Navbar = () => {
         </nav>
       </div>
 
+      {/* Button to open mobile navigation */}
       <div className={nav_options_container_mobile}>
         <nav>
           <Button
@@ -110,6 +128,7 @@ const Navbar = () => {
         </nav>
       </div>
 
+      {/* Popup for mobile navigation */}
       <Drawer placement={"top"} onClose={onCloseDrawer} isOpen={isOpenDrawer}>
         <DrawerOverlay />
         <DrawerContent>
@@ -125,6 +144,7 @@ const Navbar = () => {
         </DrawerContent>
       </Drawer>
 
+      {/* Popup for search modal */}
       <SearchModal onClose={onClose} size={size} isOpen={isOpen}></SearchModal>
     </div>
   );

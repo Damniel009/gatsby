@@ -61,16 +61,9 @@ module.exports = {
           interpolation: {
             escapeValue: false 
           },
-          keySeparator: false,
           nsSeparator: false
         },
-      },
-      pages: [
-        {
-          matchPath: '/:lang?/about',
-          getLanguageFromPath: true,
-        },
-      ]
+      }
     },
     {
       resolve: `gatsby-plugin-typescript`,
