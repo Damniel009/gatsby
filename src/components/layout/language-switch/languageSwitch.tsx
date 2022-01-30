@@ -1,20 +1,22 @@
 import React from "react";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
+import { Select } from "@chakra-ui/react";
+import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 
 const LanguageSwitch = () => {
-  const { languages, originalPath } = useI18next();
+  const { languages, originalPath, language } = useI18next();
+
+  const [value, setValue] = React.useState(language);
   return (
-    <header className="main-header">
-      <ul className="languages">
+    <RadioGroup onChange={setValue} value={value}>
+      <Stack direction="row">
         {languages.map((lng) => (
-          <li key={lng}>
-            <Link to={originalPath} language={lng}>
-              {lng}
-            </Link>
-          </li>
+          <Link to={originalPath} language={lng} key={lng}>
+            <Radio value={lng}>{lng}</Radio>
+          </Link>
         ))}
-      </ul>
-    </header>
+      </Stack>
+    </RadioGroup>
   );
 };
 

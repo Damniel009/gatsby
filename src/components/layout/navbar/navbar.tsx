@@ -52,7 +52,7 @@ const menuOptions = [
 
 const convertMenuLinks = (link: string, language: string) => {
   if (language === "ro") {
-    const newLink = '/ro' + link;
+    const newLink = "/ro" + link;
     return newLink;
   }
   return link;
@@ -95,6 +95,7 @@ const Navbar = () => {
               return (
                 <li className="nav__item" key={menuOption.name}>
                   <Link
+                    key={menuOption.name}
                     to={convertMenuLinks(menuOption.link, language)}
                     activeClassName={active}
                   >
@@ -135,7 +136,11 @@ const Navbar = () => {
           <DrawerBody>
             {menuOptions.map((menuOption) => {
               return (
-                <Link to={menuOption.link} activeClassName={active}>
+                <Link
+                  key={menuOption.name}
+                  to={menuOption.link}
+                  activeClassName={active}
+                >
                   <div className="link">{menuOption.name}</div>
                 </Link>
               );

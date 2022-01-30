@@ -28,12 +28,10 @@
 }
 
 .space {
+  display: flex;
   width: 40%;
-  margin: auto 0;
-  margin-right: 40px;
-  align-self: center;
-  position: relative;
-  padding-bottom: 5px;
+  align-content: center;
+  align-items: center;
 }
 
 .nav_options_container {
