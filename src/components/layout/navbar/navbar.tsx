@@ -83,14 +83,15 @@ const Navbar = () => {
         />
       </div>
 
-      <div className={space}>
-        <LanguageSwitch></LanguageSwitch>
-      </div>
+      <div className={space}></div>
 
       {/* Desktop navigation */}
       <div className={nav_options_container}>
         <nav>
           <ul className="nav-links">
+            <li className="nav__item" key={"language_switch"}>
+              <LanguageSwitch></LanguageSwitch>
+            </li>
             {menuOptions.map((menuOption, index) => {
               return (
                 <li className="nav__item" key={menuOption.name}>
