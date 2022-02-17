@@ -8,9 +8,9 @@ interface Flag {
 
 const Flag: React.FC<Flag> = ({ language }) => {
   if (language === "hu") {
-    return <HUflag width="12px" paddingBottom="2px" />;
+    return <HUflag width="12px"/>;
   } else {
-    return <ROflag width="12px" paddingBottom="2px" />;
+    return <ROflag width="12px"/>;
   }
 };
 

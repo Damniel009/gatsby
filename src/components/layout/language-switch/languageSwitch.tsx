@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
-// import HUflag from "../../../images/icons/hu.svg";
-// import ROflag from "../../../images/icons/ro.svg";
 import {
   Popover,
   PopoverTrigger,
